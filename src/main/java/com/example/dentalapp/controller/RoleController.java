@@ -2,10 +2,10 @@ package com.example.dentalapp.controller;
 
 import com.example.dentalapp.model.Role;
 import com.example.dentalapp.service.RoleService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -17,7 +17,14 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    @PostMapping("roles")
+    @GetMapping("/roles")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public List<Role> getRoles(){
+        return roleService.getRoles();
+    }
+
+    @PostMapping("/roles")
+    @PreAuthorize("hasRole('ADMIN')")
     public Role createRole(@RequestBody Role role){
         return roleService.createRole(role);
     }
