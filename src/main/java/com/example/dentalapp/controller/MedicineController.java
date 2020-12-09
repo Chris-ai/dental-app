@@ -38,10 +38,10 @@ public class MedicineController {
         return medicineService.createNewMedicine(medicine);
     }
 
-    @PutMapping("/medicines")
+    @PutMapping("/medicines/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Medicine editMedicine(@RequestBody Medicine medicine){
-        return medicineService.editMedicine(medicine);
+    public Medicine editMedicine(@PathVariable long id, @RequestBody Medicine medicine){
+        return medicineService.editMedicine(medicine,id);
     }
 
     @DeleteMapping("/medicines/{id}")

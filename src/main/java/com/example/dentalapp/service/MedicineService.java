@@ -30,8 +30,9 @@ public class MedicineService {
     }
 
     @Transactional
-    public Medicine editMedicine(Medicine medicine) {
-        Medicine medicineEdited = medicineRepository.findById(medicine.getId());
+    public Medicine editMedicine(Medicine medicine, long id) {
+        Medicine medicineEdited = medicineRepository.findById(id);
+
         medicineEdited.setName(medicine.getName());
         medicineEdited.setAmount(medicine.getAmount());
         medicineEdited.setDescription(medicine.getDescription());
