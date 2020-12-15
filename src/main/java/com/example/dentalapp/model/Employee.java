@@ -15,26 +15,30 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(targetEntity = Position.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE )
+    @JoinColumn
     private Position position;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(targetEntity = Contract.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE )
+    @JoinColumn
     private Contract contract;
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne(targetEntity = Account.class,fetch = FetchType.LAZY,cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private Account account;
     private String name;
     private String surname;
     private String pesel;
+    private int age;
     private Date dateOfEmployment;
     private String email;
     private long phoneNumber;
     private float salary;
 
-    public Employee(String name,String surname,String pesel, Date dateOfEmployment, String email, int phoneNumber,
+    public Employee(String name,String surname, int age,String pesel, Date dateOfEmployment, String email, int phoneNumber,
                     Position position, float salary,Contract contract, Account account) {
         this.name = name;
         this.surname = surname;
         this.pesel = pesel;
         this.dateOfEmployment = dateOfEmployment;
+        this.age = age;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.position = position;

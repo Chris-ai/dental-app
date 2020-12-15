@@ -49,4 +49,6 @@ public class MedicineService {
     public Medicine getSingleMedicines(long id) {
         return medicineRepository.findById(id);
     }
+
+
 }

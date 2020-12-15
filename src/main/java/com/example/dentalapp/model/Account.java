@@ -29,4 +29,8 @@ public class Account {
         this.username = username;
         this.password = password;
     }
+
+    public void addRole(Role role){
+        this.roles.add(role);
+    }
 }

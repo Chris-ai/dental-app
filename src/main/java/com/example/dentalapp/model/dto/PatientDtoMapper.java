@@ -18,7 +18,7 @@ public class PatientDtoMapper {
     public static PatientDto mapToPatientDto(Patient patient){
         return PatientDto.builder()
                 .id(patient.getId())
-                .cardId(patient.getCardId())
+                .age(patient.getAge())
                 .name(patient.getName())
                 .surname(patient.getSurname())
                 .bornDate(patient.getBornDate())

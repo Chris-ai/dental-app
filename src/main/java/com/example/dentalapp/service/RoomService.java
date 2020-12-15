@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class RoomService {
 
-    RoomRepository roomRepository;
+    private final RoomRepository roomRepository;
 
     @Autowired
     public RoomService(RoomRepository roomRepository) {
@@ -31,8 +31,8 @@ public class RoomService {
     }
 
     @Transactional
-    public Room editRoom(Room room) {
-        Room roomEdited = roomRepository.findById(room.getId());
+    public Room editRoom(Room room, long roomId) {
+        Room roomEdited = roomRepository.findById(roomId);
         roomEdited.setNumber(room.getNumber());
         return roomEdited;
     }

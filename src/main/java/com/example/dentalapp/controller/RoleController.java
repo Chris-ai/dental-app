@@ -1,5 +1,6 @@
 package com.example.dentalapp.controller;
 
+import com.example.dentalapp.model.Account;
 import com.example.dentalapp.model.Role;
 import com.example.dentalapp.service.RoleService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,9 +24,16 @@ public class RoleController {
         return roleService.getRoles();
     }
 
+    @GetMapping("/roles/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public Role getRoleById(@PathVariable long id){
+        return roleService.getRoleById(id);
+    }
+
     @PostMapping("/roles")
     @PreAuthorize("hasRole('ADMIN')")
     public Role createRole(@RequestBody Role role){
         return roleService.createRole(role);
     }
+
 }

@@ -36,10 +36,10 @@ public class SurgeryController {
         return surgeryService.createNewSurgery(surgery);
     }
 
-    @PutMapping("/surgeries")
+    @PutMapping("/surgeries/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Surgery editSurgery(@RequestBody Surgery surgery){
-        return surgeryService.editSurgery(surgery);
+    public Surgery editSurgery(@RequestBody Surgery surgery,@PathVariable long id){
+        return surgeryService.editSurgery(surgery,id);
     }
 
     @DeleteMapping("/surgeries/{id}")

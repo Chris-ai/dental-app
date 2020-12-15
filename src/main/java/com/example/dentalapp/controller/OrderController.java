@@ -30,16 +30,16 @@ public class OrderController {
         return OrderDtoMapper.mapToOrderDto(orderService.getSingleOrder(id));
     }
 
-    @PostMapping("/orders")
+    @PostMapping("/orders/")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public Order createOrder(@RequestBody Order order){
         return orderService.createOrder(order);
     }
 
-    @PutMapping("/orders")
+    @PutMapping("/orders/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Order editOrder(@RequestBody Order order){
-        return orderService.editOrder(order);
+    public Order editOrder(@PathVariable long id,@RequestBody Order order){
+        return orderService.editOrder(order,id);
     }
 
     @DeleteMapping("/orders/{id}")

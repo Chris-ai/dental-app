@@ -19,17 +19,18 @@ public class Visit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Date DateOfVisit;
+    private String timeVisit;
     private String comment;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(targetEntity = Patient.class,fetch = FetchType.LAZY,cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private Patient patient;
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne
     private Employee employee;
     @OneToOne(cascade = CascadeType.MERGE)
     private Surgery surgery;
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name="visit_id")
     private List<Tooth> teeth;
-    @ManyToOne
+    @ManyToOne(targetEntity = Room.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE )
     private Room room;
 
     public Visit(Date DateOfVisit, String comment, Patient patient, Employee employee, Surgery surgery, Room room){

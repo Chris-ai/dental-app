@@ -17,10 +17,10 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long cardId;
     private String name;
     private String surname;
     private String pesel;
+    private int age;
     private Date registerDate;
     private Date bornDate;
     private String city;
@@ -33,11 +33,12 @@ public class Patient {
     @JoinColumn(name = "patient_id")
     private List<Visit> visitList;
 
-    public Patient(String name, String surname, String pesel, Date registerDate, Date bornDate,
+    public Patient(String name, String surname, String pesel, int age, Date registerDate, Date bornDate,
                    String city, String address, String email, String zipCode, int phoneNumber, String extra_info) {
         this.name = name;
         this.surname = surname;
         this.pesel = pesel;
+        this.age = age;
         this.bornDate = bornDate;
         this.registerDate = registerDate;
         this.city = city;

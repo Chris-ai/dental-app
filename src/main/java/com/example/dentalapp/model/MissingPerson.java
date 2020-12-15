@@ -19,9 +19,9 @@ public class MissingPerson {
     private long id;
     private Date beggingDate;
     private Date comebackDate;
-    @ManyToOne
+    @ManyToOne(targetEntity = Leave.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE )
     private Leave leave;
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private Employee employee;
 
     public MissingPerson(Date begging, Date comeback, Leave leave, Employee employee) {

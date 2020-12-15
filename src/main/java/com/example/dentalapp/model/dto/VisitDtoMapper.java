@@ -16,53 +16,10 @@ public class VisitDtoMapper {
     }
 
     public static VisitDto mapToVisitDto(Visit visit) {
-
-        if(visit.getPatient() == null){
             return VisitDto.builder()
                     .id(visit.getId())
                     .DateOfVisit(visit.getDateOfVisit())
-                    .comment(visit.getComment())
-                    .employeeName(visit.getEmployee().getName())
-                    .employeeSurname(visit.getEmployee().getSurname())
-                    .surgery(visit.getSurgery().getName())
-                    .room(visit.getRoom().getNumber())
-                    .build();
-        } else if(visit.getEmployee() == null){
-            return VisitDto.builder()
-                    .id(visit.getId())
-                    .DateOfVisit(visit.getDateOfVisit())
-                    .comment(visit.getComment())
-                    .patientName(visit.getPatient().getName())
-                    .patientSurname(visit.getPatient().getSurname())
-                    .surgery(visit.getSurgery().getName())
-                    .room(visit.getRoom().getNumber())
-                    .build();
-        } else if(visit.getSurgery() == null){
-            return VisitDto.builder()
-                    .id(visit.getId())
-                    .DateOfVisit(visit.getDateOfVisit())
-                    .comment(visit.getComment())
-                    .employeeName(visit.getEmployee().getName())
-                    .employeeSurname(visit.getEmployee().getSurname())
-                    .patientName(visit.getPatient().getName())
-                    .patientSurname(visit.getPatient().getSurname())
-                    .room(visit.getRoom().getNumber())
-                    .build();
-        } else if(visit.getRoom() == null){
-            return VisitDto.builder()
-                    .id(visit.getId())
-                    .DateOfVisit(visit.getDateOfVisit())
-                    .comment(visit.getComment())
-                    .employeeName(visit.getEmployee().getName())
-                    .employeeSurname(visit.getEmployee().getSurname())
-                    .patientName(visit.getPatient().getName())
-                    .patientSurname(visit.getPatient().getSurname())
-                    .surgery(visit.getSurgery().getName())
-                    .build();
-        } else {
-            return VisitDto.builder()
-                    .id(visit.getId())
-                    .DateOfVisit(visit.getDateOfVisit())
+                    .timeVisit(visit.getTimeVisit())
                     .comment(visit.getComment())
                     .employeeName(visit.getEmployee().getName())
                     .employeeSurname(visit.getEmployee().getSurname())
@@ -73,4 +30,4 @@ public class VisitDtoMapper {
                     .build();
         }
     }
-}
+

@@ -13,8 +13,9 @@ import java.util.List;
 
 @Service
 public class PatientService {
+
     private final PatientRepository patientRepository;
-    private VisitRepository visitRepository;
+    private final VisitRepository visitRepository;
 
     @Autowired
     public PatientService(PatientRepository patientRepository, VisitRepository visitRepository) {
@@ -36,13 +37,12 @@ public class PatientService {
     }
 
     public Patient createNewPatient(Patient patient) {
-        patient.setCardId(patient.getId()+100);
         return patientRepository.save(patient);
     }
 
     @Transactional
-    public Patient editPatient(Patient patient) {
-        Patient patientEdited = patientRepository.findById(patient.getId());
+    public Patient editPatient(Patient patient,long patientId) {
+        Patient patientEdited = patientRepository.findById(patientId);
         patientEdited.setName(patient.getName());
         patientEdited.setSurname(patient.getSurname());
         patientEdited.setAddress(patient.getAddress());

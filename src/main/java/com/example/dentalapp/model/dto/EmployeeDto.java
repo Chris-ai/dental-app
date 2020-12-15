@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Getter
@@ -16,6 +18,7 @@ public class EmployeeDto {
     private String name;
     private String surname;
     private String pesel;
+    private int age;
     private Date dateOfEmployment;
     private String email;
     private long phoneNumber;

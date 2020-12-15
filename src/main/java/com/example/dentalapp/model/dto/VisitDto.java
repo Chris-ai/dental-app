@@ -14,6 +14,7 @@ import java.util.List;
 public class VisitDto {
     private long id;
     private Date DateOfVisit;
+    private String timeVisit;
     private String comment;
     private String patientName;
     private String patientSurname;

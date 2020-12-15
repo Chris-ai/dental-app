@@ -10,7 +10,8 @@ import java.util.List;
 
 @Service
 public class ContractService {
-    private ContractRepository contractRepository;
+
+    private final ContractRepository contractRepository;
 
     @Autowired
     public ContractService(ContractRepository contractRepository) {
@@ -34,10 +35,9 @@ public class ContractService {
     }
 
     @Transactional
-    public Contract editContract(Contract contract) {
-        Contract contractEdited =  contractRepository.findById(contract.getId());
+    public Contract editContract(Contract contract, long contractId) {
+        Contract contractEdited = contractRepository.findById(contractId);
         contractEdited.setType(contract.getType());
-
         return contractEdited;
     }
 

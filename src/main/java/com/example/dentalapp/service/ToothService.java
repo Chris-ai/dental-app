@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class ToothService {
 
-    ToothRepository toothRepository;
+    private final ToothRepository toothRepository;
 
     @Autowired
     public ToothService(ToothRepository toothRepository) {
@@ -31,8 +31,8 @@ public class ToothService {
     }
 
     @Transactional
-    public Tooth editTooth(Tooth tooth) {
-        Tooth toothEdited = toothRepository.findById(tooth.getId());
+    public Tooth editTooth(Tooth tooth,long toothId) {
+        Tooth toothEdited = toothRepository.findById(toothId);
         toothEdited.setName(tooth.getName());
         return toothEdited;
     }

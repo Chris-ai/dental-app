@@ -3,7 +3,10 @@ package com.example.dentalapp.service;
 import com.example.dentalapp.config.WebSecurityConfig;
 import com.example.dentalapp.exception.ItemNotFoundException;
 import com.example.dentalapp.model.Account;
+import com.example.dentalapp.model.Employee;
 import com.example.dentalapp.repository.AccountRepository;
+import com.example.dentalapp.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,10 +18,13 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
     private final WebSecurityConfig webSecurityConfig;
+    private final EmployeeRepository employeeRepository;
 
-    public AccountService(AccountRepository accountRepository, WebSecurityConfig webSecurityConfig) {
+    @Autowired
+    public AccountService(AccountRepository accountRepository, WebSecurityConfig webSecurityConfig, EmployeeRepository employeeRepository) {
         this.accountRepository = accountRepository;
         this.webSecurityConfig = webSecurityConfig;
+        this.employeeRepository = employeeRepository;
     }
 
     public Account getUserById(long userId){

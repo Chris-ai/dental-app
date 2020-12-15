@@ -1,6 +1,8 @@
 package com.example.dentalapp.controller;
 
 import com.example.dentalapp.model.Contract;
+import com.example.dentalapp.model.dto.ContractDto;
+import com.example.dentalapp.model.dto.ContractDtoMapper;
 import com.example.dentalapp.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,14 +22,14 @@ public class ContractController {
 
     @GetMapping("/contracts")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public List<Contract> getContracts(){
-        return contractService.getContracts();
+    public List<ContractDto> getContracts(){
+        return ContractDtoMapper.mapToContractDtos(contractService.getContracts());
     }
 
     @GetMapping("/contracts/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Contract getSingleContract(@PathVariable long id){
-        return contractService.getSingleContract(id);
+    public ContractDto getSingleContract(@PathVariable long id){
+        return ContractDtoMapper.mapToContractDto(contractService.getSingleContract(id));
     }
 
     @PostMapping("/contracts")
@@ -36,10 +38,10 @@ public class ContractController {
         return contractService.createContact(contract);
     }
 
-    @PutMapping("/contracts")
+    @PutMapping("/contracts/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Contract editContract(@RequestBody Contract contract){
-        return contractService.editContract(contract);
+    public Contract editContract(@PathVariable long id,@RequestBody Contract contract){
+        return contractService.editContract(contract,id);
     }
 
     @DeleteMapping("/contracts/{id}")

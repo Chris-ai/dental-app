@@ -2,6 +2,7 @@ package com.example.dentalapp.service;
 
 import com.example.dentalapp.model.Leave;
 import com.example.dentalapp.repository.LeaveRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -10,8 +11,9 @@ import java.util.List;
 @Service
 public class LeaveService {
 
-    LeaveRepository leaveRepository;
+    private final LeaveRepository leaveRepository;
 
+    @Autowired
     public LeaveService(LeaveRepository leaveRepository) {
         this.leaveRepository = leaveRepository;
     }
@@ -29,8 +31,8 @@ public class LeaveService {
     }
 
     @Transactional
-    public Leave editLeave(Leave leave) {
-        Leave leaveEdited = leaveRepository.findById(leave.getId());
+    public Leave editLeave(Leave leave,long leaveId) {
+        Leave leaveEdited = leaveRepository.findById(leaveId);
 
         leaveEdited.setPayed(leave.getIsPayed());
         leaveEdited.setType(leave.getType());

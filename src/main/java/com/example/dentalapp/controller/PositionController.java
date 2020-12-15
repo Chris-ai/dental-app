@@ -30,16 +30,17 @@ public class PositionController {
         return PositionDtoMapper.mapToPositionDto(positionService.getSinglePosition(id));
     }
 
+
     @PostMapping("/positions")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public Position createPosition(@RequestBody Position position){
         return positionService.createPosition(position);
     }
 
-    @PutMapping("/positions")
+    @PutMapping("/positions/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Position editPosition(@RequestBody Position position){
-        return positionService.editPosition(position);
+    public Position editPosition(@PathVariable long id, @RequestBody Position position ){
+        return positionService.editPosition(position,id);
     }
 
     @DeleteMapping("/positions/{id}")

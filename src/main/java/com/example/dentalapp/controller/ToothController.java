@@ -37,10 +37,10 @@ public class ToothController {
         return toothService.createTooth(tooth);
     }
 
-    @PutMapping("/teeth")
+    @PutMapping("/teeth/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Tooth editTooth(@RequestBody Tooth tooth){
-        return toothService.editTooth(tooth);
+    public Tooth editTooth(@RequestBody Tooth tooth,@PathVariable long id){
+        return toothService.editTooth(tooth,id);
     }
 
     @DeleteMapping("/teeth/{id}")

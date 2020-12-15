@@ -11,10 +11,10 @@ import java.util.List;
 @Builder
 public class PatientDto {
     private long id;
-    private long cardId;
     private String name;
     private String surname;
     private String pesel;
+    private int age;
     private Date registerDate;
     private Date bornDate;
     private String city;

@@ -38,10 +38,10 @@ public class VisitController {
         return visitService.createVisit(visit);
     }
 
-    @PutMapping("/visits")
+    @PutMapping("/visits/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Visit editVisit(@RequestBody Visit visit){
-        return visitService.editVisit(visit);
+    public Visit editVisit(@RequestBody Visit visit,@PathVariable long id){
+        return visitService.editVisit(visit,id);
     }
 
     @DeleteMapping("/visits/{id}")

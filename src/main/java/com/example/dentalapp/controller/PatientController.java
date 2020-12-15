@@ -44,10 +44,10 @@ public class PatientController {
         return patientService.createNewPatient(patient);
     }
 
-    @PutMapping("/patients")
+    @PutMapping("/patients/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Patient editPatient(@RequestBody Patient patient) {
-        return patientService.editPatient(patient);
+    public Patient editPatient(@PathVariable long id,@RequestBody Patient patient) {
+        return patientService.editPatient(patient, id);
     }
 
     @DeleteMapping("/patients/{id}")

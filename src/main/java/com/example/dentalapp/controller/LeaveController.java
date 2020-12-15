@@ -34,10 +34,10 @@ public class LeaveController {
         return leaveService.createLeave(leave);
     }
 
-    @PutMapping("/leaves")
+    @PutMapping("/leaves/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Leave editLeave(@RequestBody Leave leave){
-        return  leaveService.editLeave(leave);
+    public Leave editLeave(@PathVariable long id, @RequestBody Leave leave){
+        return  leaveService.editLeave(leave,id);
     }
 
     @DeleteMapping("leaves/{id}")

@@ -2,6 +2,7 @@ package com.example.dentalapp.service;
 
 import com.example.dentalapp.model.Surgery;
 import com.example.dentalapp.repository.SurgeryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -10,8 +11,9 @@ import java.util.List;
 @Service
 public class SurgeryService {
 
-    SurgeryRepository surgeryRepository;
+    private final SurgeryRepository surgeryRepository;
 
+    @Autowired
     public SurgeryService(SurgeryRepository surgeryRepository) {
         this.surgeryRepository = surgeryRepository;
     }
@@ -29,8 +31,8 @@ public class SurgeryService {
     }
 
     @Transactional
-    public Surgery editSurgery(Surgery surgery) {
-        Surgery surgeryEdited = surgeryRepository.findById(surgery.getId());
+    public Surgery editSurgery(Surgery surgery, long surgeryId) {
+        Surgery surgeryEdited = surgeryRepository.findById(surgeryId);
         surgeryEdited.setName(surgery.getName());
         surgeryEdited.setDescription(surgery.getDescription());
         surgeryEdited.setMedicineList(surgery.getMedicineList());

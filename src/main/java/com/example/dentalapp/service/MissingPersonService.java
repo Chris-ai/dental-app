@@ -2,6 +2,7 @@ package com.example.dentalapp.service;
 
 import com.example.dentalapp.model.MissingPerson;
 import com.example.dentalapp.repository.MissingPersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,8 +11,9 @@ import java.util.List;
 @Service
 public class MissingPersonService {
 
-    MissingPersonRepository missingPersonRepository;
+    private final MissingPersonRepository missingPersonRepository;
 
+    @Autowired
     public MissingPersonService(MissingPersonRepository missingPersonRepository) {
         this.missingPersonRepository = missingPersonRepository;
     }
@@ -29,8 +31,8 @@ public class MissingPersonService {
     }
 
     @Transactional
-    public MissingPerson editMissingPerson(MissingPerson people) {
-        MissingPerson missingPersonEdited = missingPersonRepository.findById(people.getId());
+    public MissingPerson editMissingPerson(MissingPerson people,long leaveId) {
+        MissingPerson missingPersonEdited = missingPersonRepository.findById(leaveId);
         missingPersonEdited.setBeggingDate(people.getBeggingDate());
         missingPersonEdited.setComebackDate(people.getComebackDate());
         missingPersonEdited.setLeave(people.getLeave());

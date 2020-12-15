@@ -19,7 +19,7 @@ public class Medicine {
     private String name;
     private double amount;
     private String description;
-    @ManyToOne(cascade = {CascadeType.MERGE})
+    @ManyToOne(targetEntity = Surgery.class,fetch = FetchType.LAZY,cascade = {CascadeType.MERGE})
     private Surgery surgery;
     @OneToMany(cascade = {CascadeType.REMOVE,CascadeType.MERGE})
     @JoinColumn(name = "medicine_id")

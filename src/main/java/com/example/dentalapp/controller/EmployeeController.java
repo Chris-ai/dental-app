@@ -38,10 +38,10 @@ public class EmployeeController {
         return employeeService.addNewEmployee(employee);
     }
 
-    @PutMapping("/employees")
+    @PutMapping("/employees/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public Employee editEmployee(@RequestBody Employee employee){
-        return employeeService.editEmployee(employee);
+    public Employee editEmployee(@PathVariable long id,@RequestBody Employee employee){
+        return employeeService.editEmployee(employee,id);
     }
 
     @DeleteMapping("/employees/{id}")

@@ -11,7 +11,8 @@ import java.util.List;
 @Service
 public class VisitService {
 
-    private VisitRepository visitRepository;
+    private final VisitRepository visitRepository;
+    private MedicineService medicineService;
 
     @Autowired
     public VisitService(VisitRepository visitRepository) {
@@ -35,30 +36,16 @@ public class VisitService {
     }
 
     @Transactional
-    public Visit editVisit(Visit visit) {
-        Visit visitEdited = visitRepository.findById(visit.getId());
+    public Visit editVisit(Visit visit, long visitId) {
+        Visit visitEdited = visitRepository.findById(visitId);
 
-        if(visit.getComment() != null){
             visitEdited.setComment(visit.getComment());
-        }
-        if(visit.getPatient() != null){
             visitEdited.setPatient(visit.getPatient());
-        }
-        if(visit.getDateOfVisit() != null){
             visitEdited.setDateOfVisit(visit.getDateOfVisit());
-        }
-        if(visit.getEmployee() != null){
             visitEdited.setEmployee(visit.getEmployee());
-        }
-        if(visit.getRoom() != null){
             visitEdited.setRoom(visit.getRoom());
-        }
-        if(visit.getSurgery() != null){
             visitEdited.setSurgery(visit.getSurgery());
-        }
-        if(visit.getTeeth() != null){
             visitEdited.setTeeth(visit.getTeeth());
-        }
 
         return visitEdited;
     }

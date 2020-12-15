@@ -36,10 +36,10 @@ public class RoomController {
         return roomService.createRoom(room);
     }
 
-    @PutMapping("/rooms")
+    @PutMapping("/rooms/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Room editRoom(@RequestBody Room room){
-        return roomService.editRoom(room);
+    public Room editRoom(@PathVariable long id ,@RequestBody Room room){
+        return roomService.editRoom(room,id);
     }
 
     @DeleteMapping("/rooms/{id}")
