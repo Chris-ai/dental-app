@@ -14,14 +14,13 @@ import java.util.List;
 public class VisitDto {
     private long id;
     private Date DateOfVisit;
-    private String timeVisit;
     private String comment;
     private String patientName;
     private String patientSurname;
+    private long employeeId;
     private String employeeName;
     private String employeeSurname;
     private String surgery;
     private String toothName;
-    private int room;
 }
 

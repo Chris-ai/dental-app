@@ -43,7 +43,6 @@ public class VisitService {
             visitEdited.setPatient(visit.getPatient());
             visitEdited.setDateOfVisit(visit.getDateOfVisit());
             visitEdited.setEmployee(visit.getEmployee());
-            visitEdited.setRoom(visit.getRoom());
             visitEdited.setSurgery(visit.getSurgery());
             visitEdited.setTeeth(visit.getTeeth());
 

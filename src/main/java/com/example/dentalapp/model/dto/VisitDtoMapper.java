@@ -19,14 +19,13 @@ public class VisitDtoMapper {
             return VisitDto.builder()
                     .id(visit.getId())
                     .DateOfVisit(visit.getDateOfVisit())
-                    .timeVisit(visit.getTimeVisit())
                     .comment(visit.getComment())
+                    .employeeId(visit.getEmployee().getId())
                     .employeeName(visit.getEmployee().getName())
                     .employeeSurname(visit.getEmployee().getSurname())
                     .patientName(visit.getPatient().getName())
                     .patientSurname(visit.getPatient().getSurname())
                     .surgery(visit.getSurgery().getName())
-                    .room(visit.getRoom().getNumber())
                     .build();
         }
     }

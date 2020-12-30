@@ -19,6 +19,7 @@ public class EmployeeDto {
     private String surname;
     private String pesel;
     private int age;
+    private long accountId;
     private Date dateOfEmployment;
     private String email;
     private long phoneNumber;

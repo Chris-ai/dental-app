@@ -1,6 +1,8 @@
 package com.example.dentalapp.controller;
 
 import com.example.dentalapp.model.Room;
+import com.example.dentalapp.model.dto.RoomDto;
+import com.example.dentalapp.model.dto.RoomDtoMapper;
 import com.example.dentalapp.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,14 +22,14 @@ public class RoomController {
 
     @GetMapping("/rooms")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public List<Room> getRooms(){
-        return  roomService.getRooms();
+    public List<RoomDto> getRooms(){
+        return RoomDtoMapper.mapToRoomDtos(roomService.getRooms());
     }
 
     @GetMapping("/rooms/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Room getSingleRoom(@PathVariable long id){
-        return roomService.getSingleRoom(id);
+    public RoomDto getSingleRoom(@PathVariable long id){
+        return RoomDtoMapper.mapToRoomDto(roomService.getSingleRoom(id));
     }
 
     @PostMapping("/rooms")

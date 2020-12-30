@@ -16,9 +16,6 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int number;
-    @OneToMany
-    @JoinColumn(name = "room_id")
-    private List<Visit> visits;
 
     public Room(int number) {
         this.number = number;

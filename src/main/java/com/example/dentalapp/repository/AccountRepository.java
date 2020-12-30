@@ -10,5 +10,7 @@ import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account,Long> {
     List<Account> findAll();
+    @Query("select k from konto k where k.id = :id")
+    Account findAccountById(long id);
     Optional<Account> findByUsername(String username);
 }

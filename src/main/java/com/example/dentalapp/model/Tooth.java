@@ -15,6 +15,7 @@ public class Tooth {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    private int number;
     @ManyToOne
     private Visit visit;
 

@@ -20,8 +20,8 @@ public class OrderDtoMapper {
                 .id(order.getId())
                 .amount(order.getAmount())
                 .orderDate(order.getOrderDate())
-                .price(order.getPrice())
                 .medicineName(order.getMedicine().getName())
+                .medicineId(order.getMedicine().getId())
                 .build();
     }
 }

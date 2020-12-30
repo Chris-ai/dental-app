@@ -38,12 +38,12 @@ public class AccountService {
     }
 
     @Transactional
-    public Account editAccount(Account account) {
-        Account editedAccount = new Account();
+    public Account editAccount(Account account, long accountId) {
+        Account editedAccount = accountRepository.findAccountById(accountId);
 
-        editedAccount.setId(account.getId());
+        editedAccount.setId(accountId);
         editedAccount.setUsername(account.getUsername());
-        editedAccount.setPassword(account.getPassword());
+        editedAccount.setPassword(webSecurityConfig.passwordEncoder().encode(account.getPassword()));
         editedAccount.setRoles(account.getRoles());
 
         return editedAccount;

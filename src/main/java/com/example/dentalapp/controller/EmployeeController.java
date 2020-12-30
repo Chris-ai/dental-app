@@ -4,6 +4,7 @@ import com.example.dentalapp.model.Employee;
 import com.example.dentalapp.model.dto.EmployeeDto;
 import com.example.dentalapp.model.dto.EmployeeDtoMapper;
 import com.example.dentalapp.service.EmployeeService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,12 @@ public class EmployeeController {
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public EmployeeDto getEmployeeById(@PathVariable long id){
         return EmployeeDtoMapper.mapToEmployeeDto(employeeService.getEmployeeById(id));
+    }
+
+    @GetMapping("/employees/dentists")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public List<EmployeeDto> getDentists(){
+        return EmployeeDtoMapper.mapToEmployeeDtos(employeeService.getDentists());
     }
 
     @PostMapping("/employees")

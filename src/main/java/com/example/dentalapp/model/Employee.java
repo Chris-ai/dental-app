@@ -21,7 +21,7 @@ public class Employee {
     @ManyToOne(targetEntity = Contract.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE )
     @JoinColumn
     private Contract contract;
-    @OneToOne(targetEntity = Account.class,fetch = FetchType.LAZY,cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToOne(targetEntity = Account.class,fetch = FetchType.EAGER,cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private Account account;
     private String name;
     private String surname;

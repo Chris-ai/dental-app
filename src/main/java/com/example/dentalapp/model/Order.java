@@ -21,7 +21,7 @@ public class Order {
     private Date orderDate;
     private double amount;
     private float price;
-    @ManyToOne(targetEntity = Medicine.class,fetch = FetchType.LAZY,cascade = {CascadeType.REMOVE,CascadeType.MERGE})
+    @ManyToOne(targetEntity = Medicine.class,fetch = FetchType.LAZY,cascade = {CascadeType.MERGE})
     @JoinColumn
     private Medicine medicine;
 

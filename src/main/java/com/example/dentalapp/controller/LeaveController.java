@@ -1,6 +1,8 @@
 package com.example.dentalapp.controller;
 
 import com.example.dentalapp.model.Leave;
+import com.example.dentalapp.model.dto.LeaveDto;
+import com.example.dentalapp.model.dto.LeaveDtoMapper;
 import com.example.dentalapp.service.LeaveService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -18,14 +20,14 @@ public class LeaveController {
 
     @GetMapping("/leaves")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public List<Leave> getLeaves(){
-        return leaveService.getLeaves();
+    public List<LeaveDto> getLeaves(){
+        return LeaveDtoMapper.mapLeavesToDtos(leaveService.getLeaves());
     }
 
     @GetMapping("/leaves/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public Leave getSingleLeave(@PathVariable long id){
-        return leaveService.getSingleLeave(id);
+    public LeaveDto getSingleLeave(@PathVariable long id){
+        return LeaveDtoMapper.mapLeaveToDto(leaveService.getSingleLeave(id));
     }
 
     @PostMapping("/leaves")

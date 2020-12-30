@@ -41,7 +41,6 @@ public class MissingPersonController {
     public MissingPersonDto editMissingPerson(@PathVariable long id ,@RequestBody MissingPerson people){
         return MissingPersonDtoMapper.mapToMissingPersonDto(missingPersonService.editMissingPerson(people,id));
     }
-
     @DeleteMapping("/missing/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteMissingPerson(@PathVariable long id){

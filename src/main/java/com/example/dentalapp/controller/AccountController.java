@@ -31,8 +31,13 @@ public class AccountController {
         return accountService.createAccount(account);
     }
 
-    @PutMapping("/accounts")
-    public Account editAccount(@RequestBody Account account){
-        return accountService.editAccount(account);
+    @PutMapping("/accounts/{id}")
+    public Account editAccount(@PathVariable long id, @RequestBody Account account){
+        return accountService.editAccount(account,id);
+    }
+
+    @DeleteMapping("/accounts/{id}")
+    public void deleteAccount(@PathVariable long id){
+        accountService.deleteAccount(id);
     }
 }

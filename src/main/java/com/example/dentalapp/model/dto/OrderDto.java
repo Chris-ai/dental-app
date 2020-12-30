@@ -15,7 +15,7 @@ public class OrderDto {
     private long id;
     private Date orderDate;
     private double amount;
-    private float price;
     private String medicineName;
+    private long medicineId;
 }
 

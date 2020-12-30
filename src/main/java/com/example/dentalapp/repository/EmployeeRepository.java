@@ -9,4 +9,6 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     List<Employee> findAll();
     Employee findById(long id);
+    @Query("select p from Pracownik p where p.position.name = :position")
+    List<Employee> findAllDentists(String position);
 }

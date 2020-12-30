@@ -23,6 +23,7 @@ public class EmployeeDtoMapper {
                 .name(employee.getName())
                 .surname(employee.getSurname())
                 .pesel(employee.getPesel())
+                .accountId(employee.getAccount().getId())
                 .age(employee.getAge())
                 .dateOfEmployment(employee.getDateOfEmployment())
                 .email(employee.getEmail())

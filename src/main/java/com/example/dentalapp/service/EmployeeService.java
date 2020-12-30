@@ -77,4 +77,8 @@ public class EmployeeService {
         missingPersonService.deleteMissingPerson(employeeRepository.findById(id).getId());
         employeeRepository.deleteById(id);
     }
+
+    public List<Employee> getDentists() {
+        return employeeRepository.findAllDentists("Stomatolog");
+    }
 }

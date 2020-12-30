@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface PositionRepository extends JpaRepository<Position,Long> {
     Position findById(long id);
-    @Query("select p from Stanowisko p left join fetch p.employees")
     List<Position> findAll();
 }

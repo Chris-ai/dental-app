@@ -30,7 +30,7 @@ public class OrderController {
         return OrderDtoMapper.mapToOrderDto(orderService.getSingleOrder(id));
     }
 
-    @PostMapping("/orders/")
+    @PostMapping("/orders")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public Order createOrder(@RequestBody Order order){
         return orderService.createOrder(order);
